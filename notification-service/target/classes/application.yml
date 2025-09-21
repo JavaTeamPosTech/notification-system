@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: notification-service
+
+  kafka:
+#    bootstrap-servers: kafka:9092
+    bootstrap-servers: host.docker.internal:9092
+    consumer:
+      group-id: notification_service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted-packages: '*'
+#        spring.json.trusted-packages: "com.example.events"
+    enabled: true
+    topics:
+      project-status-changed: DEV_project_status_changed_1_0_pu
+
+  mail:
+    host: mailhog
+    port: 1025
+    properties:
+      mail.smtp.auth: false
+      mail.smtp.starttls.enable: false
+    addresses:
+      from: dev@sipios.com
+      replyTo: no-reply@sipios.com
+
+server:
+  port: 8082
