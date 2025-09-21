@@ -1,7 +1,7 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
-    <artifactId>parent-project</artifactId>
+    <groupId>com.example.system</groupId>
+    <artifactId>notification-system</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
@@ -11,6 +11,7 @@
     </properties>
 
     <modules>
+        <module>kafta-models</module>
         <module>scheduler-service</module>
         <module>notification-service</module>
     </modules>
@@ -25,11 +26,6 @@
                 <scope>import</scope>
             </dependency>
 
-            <dependency>
-                <groupId>com.example</groupId>
-                <artifactId>appointments-events</artifactId>
-                <version>1.0.0</version>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 

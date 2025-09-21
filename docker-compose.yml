@@ -12,8 +12,8 @@ services:
 
   scheduler-service:
     build:
-      context: ./scheduler-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: scheduler-service/Dockerfile
     ports:
       - "8081:8081"
     environment:
@@ -30,8 +30,8 @@ services:
 
   notification-service:
     build:
-      context: ./notification-service
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: notification-service/Dockerfile
     depends_on:
       - kafka
       - mailhog

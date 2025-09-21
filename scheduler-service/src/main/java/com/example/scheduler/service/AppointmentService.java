@@ -1,6 +1,6 @@
 package com.example.scheduler.service;
 
-import com.example.scheduler.model.Appointment;
+import com.example.events.Appointment;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,0 @@
-com\example\notification\config\KafkaConsumerConfig.class
-com\example\notification\listener\AppointmentListener.class
-com\example\notification\NotificationServiceApplication.class
-com\example\notification\service\EmailService.class
-com\example\notification\model\Appointment.class

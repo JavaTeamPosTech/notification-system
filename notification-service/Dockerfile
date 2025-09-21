@@ -1,18 +1,15 @@
-# Stage 1: Build
 FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-COPY pom.xml .
-COPY src ./src
+COPY . .
+
+# Build de todos os módulos de uma vez
 RUN mvn clean package -DskipTests -Dfile.encoding=UTF-8
 
-# Stage 2: Run
+# Stage final
 FROM eclipse-temurin:21
 WORKDIR /app
 
-# Copia o JAR gerado no build, com o nome real
-COPY --from=build /app/target/notification-service-0.0.1-SNAPSHOT.jar .
+COPY --from=build /app/notification-service/target/notification-service-0.0.1-SNAPSHOT.jar .
 
-# Comando para rodar o JAR
 CMD ["java", "-jar", "notification-service-0.0.1-SNAPSHOT.jar"]
-

@@ -1,12 +1,9 @@
 package com.example.notification.listener;
 
-import com.example.notification.model.Appointment;
+import com.example.events.Appointment;
 import com.example.notification.service.EmailService;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
-import java.util.Map;
 
 @Component
 public class AppointmentListener {
@@ -17,14 +14,9 @@ public class AppointmentListener {
         this.emailService = emailService;
     }
 
-    @KafkaListener(topics = "appointments", containerFactory = "kafkaListenerContainerFactory")
-    public void listen(Map<String, Object> payload) {
-        // Converte manualmente para sua classe local
-        Appointment appointment = new Appointment();
-        appointment.setId((String) payload.get("id"));
-        appointment.setPatientName((String) payload.get("patientName"));
-        appointment.setDateTime(LocalDateTime.parse((String) payload.get("dateTime")));
-
+    @KafkaListener(topics = "DEV_project_status_changed_1_0_pu", containerFactory = "kafkaListenerContainerFactory")
+    public void listen(Appointment appointment) {
+        // Recebendo diretamente como objeto
         System.out.println("Recebido: " + appointment.getPatientName() +
                 " às " + appointment.getDateTime());
 
