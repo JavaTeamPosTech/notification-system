@@ -1,0 +1,4 @@
+com\example\scheduler\controller\AppointmentController.class
+com\example\scheduler\SchedulerServiceApplication.class
+com\example\scheduler\service\AppointmentService.class
+com\example\scheduler\model\Appointment.class
