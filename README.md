@@ -1,2 +1,2 @@
-# kafta-model
+# notification-system
 Trabalho do gerenciamento do hospital
