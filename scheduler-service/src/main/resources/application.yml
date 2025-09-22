@@ -8,6 +8,8 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
     enabled: true
     topics:
       project-status-changed: DEV_project_status_changed_1_0_pu
