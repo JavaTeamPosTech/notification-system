@@ -14,7 +14,9 @@ public class AppointmentService {
     }
 
     public void createAppointment(Appointment appointment) {
+        System.out.println("Mensagem recebida: " + appointment.getPatientName());
         kafkaTemplate.send("DEV_project_status_changed_1_0_pu", appointment);
         System.out.println("Mensagem enviada: " + appointment.getPatientName());
+
     }
 }
