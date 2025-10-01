@@ -1,0 +1,42 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: meu-hospital-agendamento
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://db-agendamento:5432/meu_hospital_agendamento
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  kafka:
+    bootstrap-servers: kafka:9092
+    #    bootstrap-servers: host.docker.internal:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        spring.json.add.type.headers: true
+    enabled: true
+    topics:
+      project-status-changed: DEV_project_status_changed_1_0_pu
+
+
+jwt:
+  secret: ${JWT_SECRET_KEY:minhaChaveUltraSecretaComMaisDe32Bytes}
+  prazoExpiracao: ${JWT_EXPIRATION_TIME:3600000}
+
+#auth:
+#  service:
+#    url: http://auth-service:8081
+
+
+meumenu:
+  admin:
+    login: ${DEFAULT_ADMIN_LOGIN:admin}
+    email: ${DEFAULT_ADMIN_EMAIL:admin@meumenu.com}
+    password: ${DEFAULT_ADMIN_PASSWORD:SenhaForte123!}
